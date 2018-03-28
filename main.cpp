@@ -18,21 +18,22 @@ void test1() {
 }
 
 int main() {
+    cout << Member::count() << endl; // 3
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 0
-    avi.follow(beni);
     avi.follow(beni);
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 1
     cout << beni.numFollowers() << " " << beni.numFollowing() << endl; // 1 0
     cout << Member::count() << endl; // 3
     cout << endl;
-
     avi.follow(beni); // duplicate follow has no effect
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 1
+    cout << Member::count() << endl; // 3
     avi.unfollow(beni);
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 0
     cout << endl;
 
     cout << chana.numFollowers() << " " << chana.numFollowing() << endl; // 0 0
+    cout << Member::count() << endl; // 3
     test1();
     cout << chana.numFollowers() << " " << chana.numFollowing() << endl; // 0 0
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 0

@@ -10,12 +10,12 @@
 using namespace std;
 
 class Member {
-private:
+public:
     static int numOfUsers;
     static long nextID;
     long  ID;
-    vector<Member> *folowing;
-    vector<Member> *folowers;
+    vector<long> *folowing;
+    vector<long> *folowers;
 
 public:
     Member();

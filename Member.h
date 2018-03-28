@@ -11,6 +11,9 @@ using namespace std;
 
 class Member {
 private:
+    static int numOfUsers;
+    static long nextID;
+    long  ID;
     vector<Member> folowing;
     vector<Member> folowers;
 
@@ -26,8 +29,10 @@ public:
     void follow(Member member);
     void unfollow(Member member);
     static int count();
+    bool operator==(const Member &rhs) const {
+        return rhs.ID == ID;
+    }
 };
-
 
 
 

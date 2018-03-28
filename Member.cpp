@@ -3,15 +3,18 @@
 //
 
 #include "Member.h"
-int numOfUsers = 0;
 
 
 
+int Member::numOfUsers = 0;
+long Member::nextID = 0;
 
 Member::Member(){
     vector<class Member> folowing = {};
     vector<class Member> folowers = {};
     numOfUsers++;
+    ID = nextID;
+    nextID++;
     }
 Member::~Member(){
         numOfUsers--;
@@ -24,8 +27,11 @@ int Member::numFollowing(){
     }
 void Member::follow(Member member){
         this->folowing.push_back(member);
+        cout<<endl<<endl<<endl<<member.folowers.size()<<endl<<endl;
         member.folowers.push_back(*this);
+        cout<<endl<<endl<<member.folowers.size()<<endl<<endl;
     }
+
 
 void Member::unfollow(Member member) {
     //from https://stackoverflow.com/questions/3385229/c-erase-vector-element-by-value-rather-than-by-position

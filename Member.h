@@ -14,8 +14,8 @@ private:
     static int numOfUsers;
     static long nextID;
     long  ID;
-    vector<Member> folowing;
-    vector<Member> folowers;
+    vector<Member> *folowing;
+    vector<Member> *folowers;
 
 public:
     Member();

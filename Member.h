@@ -1,5 +1,5 @@
 //
-// Created by אריה גרוס on 27 מרץ 2018.
+// Created by amgross .
 //
 #pragma once
 #ifndef PROJECT_MEMBER_H
@@ -11,7 +11,7 @@ using namespace std;
 
 class Member {
 private:
-    bool isOrigin;
+    bool isOrigin;//flag for the destructor that it is not copy of member
     static int numOfUsers;
     static long nextID;
     long  ID;

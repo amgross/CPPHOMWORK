@@ -1,5 +1,5 @@
 //
-// Created by אריה גרוס on 27 מרץ 2018.
+// Created by amgross .
 //
 
 #include "Member.h"
@@ -40,14 +40,12 @@ int Member::numFollowing(){
     return this->folowing->size();
 }
 void Member::follow(Member member) {
-    member.isOrigin = false;
-    if (find(this->folowing->begin(), this->folowing->end(), member) == this->folowing->end()) {
+    member.isOrigin = false; //it is just copy!!!
+    if ((!(*this==member))&&find(this->folowing->begin(), this->folowing->end(), member) == this->folowing->end()) {
         this->folowing->push_back(member);
-        //cout<<endl<<endl<<endl<<member.folowers->size()<<endl<<endl;
-        this->isOrigin = false;
+        this->isOrigin = false; //sending copy of 'this' to the vector
         member.folowers->push_back(*this);
-        this->isOrigin = true;
-        // cout<<endl<<endl<<member.folowers->size()<<endl<<endl;
+        this->isOrigin = true; //canging back the original
 
     }
 }
@@ -55,10 +53,8 @@ void Member::follow(Member member) {
 void Member::unfollow(Member member) {
     member.isOrigin = false;
     //from https://stackoverflow.com/questions/3385229/c-erase-vector-element-by-value-rather-than-by-position
-
-    //remove( member.folowers->begin(), member.folowers->end(), member );
-    member.folowers->erase(remove(member.folowers->begin(), member.folowers->end(), *this),member.folowers->end());
-    this->folowing->erase(remove(this->folowing->begin(), this->folowing->end(), member),this->folowing->end());
+    member.folowers->erase(remove(member.folowers->begin(), member.folowers->end(), *this),member.folowers->end());//remove 'this' from the followers of the member
+    this->folowing->erase(remove(this->folowing->begin(), this->folowing->end(), member),this->folowing->end());//remove 'member' from the list that 'this' following
 
 }
 
